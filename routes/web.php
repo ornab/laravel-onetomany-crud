@@ -61,9 +61,15 @@ Route::get('/delete', function(){
     
     $user = User::findOrFail(1);
     
-    $user->posts()->whereId(1)->delete();
+    foreach($user->posts as $post){
+        
+      $post->whereId(1)->delete();
     
-    return "Done!";
+      return "Done!";
+        
+    }
+    
+    
     
 });
 
